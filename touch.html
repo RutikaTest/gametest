@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch Move Right and Left Example</title>
+    <style>
+        body {
+            margin: 0; /* Remove default body margin */
+        }
+
+        #movableElement {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease-in-out; /* Add transition for smooth movement */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="movableElement"></div>
+
+    <script>
+        var movableElement = document.getElementById('movableElement');
+        var isDragging = false;
+        var startX = 0;
+
+        // Touch start event
+        movableElement.addEventListener('touchstart', function (e) {
+            isDragging = true;
+            startX = e.touches[0].pageX - movableElement.offsetLeft;
+        });
+
+        // Touch move event
+        document.addEventListener('touchmove', function (e) {
+            if (isDragging) {
+                // Prevent default behavior to avoid scrolling on touch devices
+                e.preventDefault();
+                
+                // Get the first touch point
+                var touch = e.touches[0];
+                
+                // Calculate the new left position based on touch coordinates
+                var newLeft = touch.pageX - startX;
+
+                // Limit the left position to be within the document body
+                newLeft = Math.max(0, Math.min(newLeft, document.body.clientWidth - movableElement.clientWidth));
+
+                // Update the position of the movable element
+                movableElement.style.left = newLeft + 'px';
+            }
+        });
+
+        // Touch end event
+        document.addEventListener('touchend', function () {
+            isDragging = false;
+        });
+    </script>
+
+</body>
+</html>
