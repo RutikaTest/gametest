@@ -36,9 +36,20 @@
 
     <div id="floor"></div>
 
-    <button id="restart">Restart</button>
-
+       <!--game over overlay-->
+  <div id="game-over">
+    <div id="game-over-content">
+      <h2>थेट बिंदू समाप्त &#9888;</h2>
+      <h3>तुमच्या गुणांची नोंदणी करण्यासाठी व मिळवलेले एकूण गुण <br />पाहण्यासाठी खालील बटणावर क्लिक करा.</h3>
+      <form id="form1" method="post" enctype="multipart/form-data" action="#" name="form1" class="">
+        <span style="display:none;"> <input type="text" name="uscore" id="uscore" value=""></span>
+        <button type="submit" id="game-over-button" name="onequestion" form="form1">निकालासाठी येथे क्लिक करा</button>
+      </form>
+    </div>
   </div>
+  </div>
+  </div>
+  
   <script src="jquery.min.js"></script>
   <script src="collision_detection.js"></script>
   <script src="variables.js"></script>
