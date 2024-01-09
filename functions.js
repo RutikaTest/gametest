@@ -35,7 +35,10 @@ function hide_bulls_eye(bullseye_num) {
 }
 
 function decrement_life() {
-    life--;
+    if(life>0)
+    {
+     life--;
+    }
     life_span.text(life);
 }
 
@@ -61,11 +64,8 @@ function update_score() {
 
 function stop_the_game() {
     cancelAnimationFrame(anim_id);
-    restart.slideDown();
+    gameover.slideDown();
 }
 
-restart.click(function () {
-    location.reload();
-});
 
 
